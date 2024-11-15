@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Score.score = 0;
+            Score.wave = 1;
             SceneManager.LoadScene(0);
         }
     }

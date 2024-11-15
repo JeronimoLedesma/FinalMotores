@@ -7,21 +7,36 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour
 {
     public static int score;
+    public static int wave;
     public TextMeshProUGUI scoreDisplay;
-    int numberOfEnemies;
+    int numberOfEnemiesPerWaver;
     // Start is called before the first frame update
     void Start()
     {
-        numberOfEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        numberOfEnemiesPerWaver = 10;
+        wave = 1;
     }
 
     public void gainScore(int gain)
     {
         score += gain;
         scoreDisplay.text = score.ToString();
-        if (score == numberOfEnemies*10)
+        if (score == numberOfEnemiesPerWaver*10*wave)
         {
-            SceneManager.LoadScene(1);
+            if (wave == 3)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    Destroy(enemy);
+                }
+                wave++;
+            }
+            
         }
     }
 }

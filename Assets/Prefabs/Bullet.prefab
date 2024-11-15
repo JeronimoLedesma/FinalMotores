@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
+  bloodVFX: {fileID: 7298135851548027239, guid: 39f9a6ef24a55c440ac52e66c4178b2f, type: 3}
+  time: 3

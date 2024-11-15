@@ -12,11 +12,14 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody rigidBody;
     bool canJump;
     public TMPro.TextMeshProUGUI scoreText;
-    public GameObject goal;
+    public bool beingHit;
+    public float stun;
+    public int life;
 
     void Start()
     {
        rigidBody = GetComponent<Rigidbody>();
+       beingHit = false;
        canJump = true;
        Cursor.lockState = CursorLockMode.Locked;
     }
@@ -47,6 +50,26 @@ public class PlayerScript : MonoBehaviour
         {
             canJump = true;
         }
+        if (collision.gameObject.CompareTag("Enemy") && !beingHit)
+        {
+            life -= 10;
+            if (life > 0)
+            {
+                StartCoroutine(hitStun());
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+            }
+
+        }
+    }
+
+    IEnumerator hitStun()
+    {
+        beingHit = true;
+        yield return new WaitForSeconds(stun);
+        beingHit = false;
     }
 }
 

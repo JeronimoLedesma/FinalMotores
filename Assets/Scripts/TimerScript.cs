@@ -6,18 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class TimerScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
+    [SerializeField] TextMeshProUGUI waveText;
+    
     
     void Update()
     {
-        remainingTime -= Time.deltaTime;
-        int minutes = Mathf.FloorToInt(remainingTime / 60);
-        int seconds = Mathf.FloorToInt(remainingTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        if (remainingTime <= 0)
-        {
-            SceneManager.LoadScene(2);
-        }
+        waveText.text = "Oleada " + Score.wave;
     }
 }
