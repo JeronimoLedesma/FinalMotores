@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     public bool beingHit;
     public float stun;
     public int life;
+    public Slider healthSlider;
 
     void Start()
     {
@@ -53,6 +54,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !beingHit)
         {
             life -= 10;
+            healthSlider.value = life;
             if (life > 0)
             {
                 StartCoroutine(hitStun());
