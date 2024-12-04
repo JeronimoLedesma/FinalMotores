@@ -10,12 +10,14 @@ public class EnemyController : MonoBehaviour
     public GameObject scoreManager;
     public int scoreGain;
     public Rigidbody body;
+    public GameObject explosion;
+    public Animator dAnimator;
 
     void Start()
     {
         scoreManager = GameObject.FindGameObjectWithTag("score");
         body = GetComponent<Rigidbody>();
-        
+        dAnimator = GetComponent<Animator>();
     }
 
     public void loseHealth(float damage)
@@ -25,8 +27,19 @@ public class EnemyController : MonoBehaviour
         healthSlider.value = health;
         if (health <= 0)
         {
-            scoreManager.gameObject.GetComponent<Score>().gainScore(scoreGain);
-            Destroy(transform.parent.gameObject);
+            StartCoroutine(Death());
         }
+    }
+
+    IEnumerator Death()
+    {
+        dAnimator.SetTrigger("Die");
+        GetComponent<Collider>().enabled = false;
+        GetComponentInParent<EnemyNAv>().enabled = false;
+        scoreManager.gameObject.GetComponent<Score>().gainScore(scoreGain);
+        GameObject explode = Instantiate(explosion, transform.position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        Destroy(explode, 1f);
+        Destroy(transform.parent.gameObject);
     }
 }
