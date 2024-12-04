@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fe77d801e405945a4ac5b611f2040f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 9049666528825765839, guid: 393d4fdf02a70b840bab9ce0ab81865a, type: 3}
+  enemy: {fileID: 9049666528825765839, guid: 781867778b25bee48bfdb8e956c83382, type: 3}
   minX: -57.5
   maxX: 44
   minXBarrera: -36
@@ -1397,6 +1397,14 @@ PrefabInstance:
     - target: {fileID: 2040246573925614728, guid: 4e894bf5d7d92ac42874c7ca0ffbb118, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491763169899622449, guid: 4e894bf5d7d92ac42874c7ca0ffbb118, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491763169899622449, guid: 4e894bf5d7d92ac42874c7ca0ffbb118, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6706712467415569817, guid: 4e894bf5d7d92ac42874c7ca0ffbb118, type: 3}
       propertyPath: scoreText
