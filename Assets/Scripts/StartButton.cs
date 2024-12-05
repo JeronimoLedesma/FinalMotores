@@ -24,6 +24,6 @@ public class StartButton : MonoBehaviour
     {
         sAnimator.SetBool("Start", true);
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
 }
